@@ -35,4 +35,9 @@ class voldemort (
         require => Package['voldemort']
     }
 
+    service { 'voldemort':
+        ensure      => running,
+        hasstatus   => false,
+    }
+
 }
