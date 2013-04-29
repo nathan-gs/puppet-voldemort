@@ -1,5 +1,5 @@
 class voldemort (
-    $cluster_name => 'voldemort-cluster',
+    $cluster_name = 'voldemort-cluster',
     $hosts_id,
     $hosts_partitions,
     $store_name = 'store0'
