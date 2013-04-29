@@ -2,7 +2,8 @@ class voldemort (
     $cluster_name = 'voldemort-cluster',
     $hosts_id,
     $hosts_partitions,
-    $store_name = 'store0'
+    $store_name = 'store0',
+    $data_dir = '/var/lib/voldemort'
 ) {
 
     $myid = $hosts_id[$fqdn]
