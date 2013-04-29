@@ -1,0 +1,17 @@
+<cluster>
+        <name><%= cluster_name %></name>
+<%
+if @hosts_id
+@hosts_id.keys.sort.each do |fqdn|
+-%>
+    <server>
+        <id><%= @hosts_id[fqdn] %></id>
+        <host><%= fqdn %></host>
+        <http-port>8081</http-port>
+        <socket-port>6666</socket-port>
+        <admin-port>6667</admin-port>
+        <partitions><%= @hosts_partitions[fqdn] %></partitions>
+    </server>
+<% end -%>
+<% end -%>
+</cluster>

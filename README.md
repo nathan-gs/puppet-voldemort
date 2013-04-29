@@ -1,2 +1,3 @@
-puppet-voldemort
-================
+Voldemort Puppet module
+=======================
+
