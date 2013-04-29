@@ -14,21 +14,21 @@ class voldemort (
     }
 
     file { '/etc/voldemort/config/cluster.xml':
-        content => template('voldemort/cluster.xml.erb')
+        content => template('voldemort/cluster.xml.erb'),
         owner   => root,
         mode    => 644,
         require => Package['voldemort']
     }
 
     file { '/etc/voldemort/config/stores.xml':
-        content => template('voldemort/stores.xml.erb')
+        content => template('voldemort/stores.xml.erb'),
         owner   => root,
         mode    => 644,
         require => Package['voldemort']
     }
 
     file { '/etc/voldemort/config/server.properties':
-        content => template('voldemort/server.properties.erb')
+        content => template('voldemort/server.properties.erb'),
         owner   => root,
         mode    => 644,
         require => Package['voldemort']
