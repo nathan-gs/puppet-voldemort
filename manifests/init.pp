@@ -3,7 +3,8 @@ class voldemort (
     $hosts_id,
     $hosts_partitions,
     $store_name = 'store0',
-    $data_dir = '/var/lib/voldemort'
+    $data_dir = '/var/lib/voldemort',
+    $http_port = '8081'
 ) {
 
     $myid = $hosts_id[$fqdn]
