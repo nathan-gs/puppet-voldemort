@@ -12,7 +12,7 @@ VOLDEMORT_HOME=/opt/voldemort
 LOG_DIR=/var/log/voldemort
 
 # Min, max, total JVM size
-JVM_SIZE="-server -Xms14g -Xmx14g"
+JVM_SIZE="-server -Xms<%= jvm_mem %> -Xmx<%= jvm_mem %>"
 
 # Type of Garbage Collector to use
 JVM_GC_TYPE="-XX:+UseConcMarkSweepGC -XX:+UseParNewGC"

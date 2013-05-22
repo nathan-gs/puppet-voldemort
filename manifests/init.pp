@@ -4,7 +4,9 @@ class voldemort (
     $hosts_partitions,
     $store_name = 'store0',
     $data_dir = '/var/lib/voldemort',
-    $http_port = '8081'
+    $http_port = '8081',
+    $jvm_mem    = '2g',
+    $bdb_cache_size    = '1GB'
 ) {
 
     $myid = $hosts_id[$fqdn]
