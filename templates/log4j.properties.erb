@@ -1,0 +1,19 @@
+log4j.rootLogger=INFO, A1
+
+log4j.appender.A1 = org.apache.log4j.DailyRollingFileAppender
+log4j.appender.A1.File = /var/log/voldemort/${logfile.name}
+log4j.appender.A1.Append = true
+log4j.appender.A1.DatePattern = '.'yyy-MM-dd
+log4j.appender.A1.layout = org.apache.log4j.PatternLayout
+log4j.appender.A1.layout.ConversionPattern = %d{yyyy-MM-dd HH:mm:ss} %c{1} [%p] %m%n
+
+# Turn on all our debugging info
+log4j.logger=INFO
+log4j.logger.httpclient.wire=INFO
+log4j.logger.org.mortbay.log=WARN
+log4j.logger.voldemort.store.routed=INFO
+log4j.logger.voldemort.store.metadata=INFO
+log4j.logger.voldemort.server.niosocket=INFO
+log4j.logger.voldemort.utils=INFO
+log4j.logger.voldemort.client.rebalance=INFO
+log4j.logger.voldemort.server=INFO

@@ -36,6 +36,13 @@ class voldemort (
         require => Package['voldemort']
     }
 
+    file { '/etc/voldemort/log4j.properties':
+        content => template('voldemort/log4j.properties.erb'),
+        owner   => root,
+        mode    => 644,
+        require => Package['voldemort']
+    }
+
     service { 'voldemort':
         ensure      => running,
         hasstatus   => false,
