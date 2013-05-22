@@ -1,0 +1,61 @@
+#!/bin/sh
+# chkconfig: - 35 65
+# description: Voldemort distributed database server
+# This file is managed by Puppet. Manual changes will be lost
+
+# Source function library
+. /etc/init.d/functions
+
+prog="voldemort-server.sh"
+
+VOLDEMORT_HOME=/opt/voldemort
+LOG_DIR=/var/log/voldemort
+
+# Min, max, total JVM size
+JVM_SIZE="-server -Xms14g -Xmx14g"
+
+# Type of Garbage Collector to use
+JVM_GC_TYPE="-XX:+UseConcMarkSweepGC -XX:+UseParNewGC"
+
+# Tuning options for the above garbage collector
+JVM_GC_OPTS="-XX:CMSInitiatingOccupancyFraction=70 -XX:SurvivorRatio=2"
+
+# JVM GC activity logging settings
+JVM_GC_LOG="-XX:+PrintTenuringDistribution -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:$LOG_DIR/gc.log"
+
+export VOLD_OPTS="$JVM_SIZE $JVM_GC_TYPE $JVM_GC_OPS $JVM_GC_LOG -Dlog4j.configuration=file:///etc/voldemort/log4j.properties"
+
+start(){
+      echo "Starting Voldemort"
+      ${VOLDEMORT_HOME}/bin/voldemort-server.sh /etc/voldemort >> /var/log/voldemort/voldemort.log 2>&1 &
+}
+
+stop(){
+      echo "Stopping Voldemort"
+      ${VOLDEMORT_HOME}/bin/voldemort-stop.sh
+
+}
+
+restart(){
+      stop
+      start
+}
+
+
+
+case "$1" in
+start)
+      start
+      ;;
+stop)
+      stop
+      ;;
+restart)
+      restart
+      ;;
+*)
+      echo "Usage: voldemort {start|stop|restart}"
+      exit 1
+esac
+
+exit 0

@@ -43,6 +43,14 @@ class voldemort (
         require => Package['voldemort']
     }
 
+    file { '/etc/init.d/voldemort':
+        content => template('voldemort/init.erb'),
+        owner   => root,
+        mode    => 755,
+        require => Package['voldemort']
+    }
+
+
     service { 'voldemort':
         ensure      => running,
         hasstatus   => false,
